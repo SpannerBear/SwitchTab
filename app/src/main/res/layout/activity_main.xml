@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <cn.spannerbear.switch_tab.SwitchTab
+        android:id="@+id/switchTab"
+        app:backgroundColor="@color/colorAccent"
+        app:tabColor="@color/colorPrimaryDark"
+        app:textSize="15sp"
+        app:defaultTextColor="@android:color/darker_gray"
+        app:selectedTextColor="@android:color/holo_green_dark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    />
+
+    <Button android:layout_width="wrap_content"
+              android:text="切换"
+              android:id="@+id/btn"
+              android:layout_centerInParent="true"
+              android:layout_height="wrap_content"/>
+
+</RelativeLayout>

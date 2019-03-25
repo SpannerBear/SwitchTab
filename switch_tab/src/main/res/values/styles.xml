@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SwitchTab">
+        <attr name="outsideMargin" format="dimension"/>
+        <attr name="textPadding" format="dimension"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="backgroundColor" format="color"/>
+        <attr name="tabColor" format="color"/>
+        <attr name="defaultTextColor" format="color"/>
+        <attr name="selectedTextColor" format="color"/>
+    </declare-styleable>
+</resources>

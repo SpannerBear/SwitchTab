@@ -285,6 +285,10 @@ public class SwitchTab extends View {
         mValueAnimator.start();
     }
     
+    public void setOnTabChangeListener(OnTabChangeListener listener) {
+        mTCListener = listener;
+    }
+    
     public interface OnTabChangeListener {
         void onChangeStart(int currentIndex);
         

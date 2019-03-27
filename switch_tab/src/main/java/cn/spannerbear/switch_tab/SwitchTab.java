@@ -1,6 +1,7 @@
 package cn.spannerbear.switch_tab;
 
 import android.animation.Animator;
+import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -36,6 +37,7 @@ public class SwitchTab extends View {
     private int mSelectedTextColor = Color.BLUE;//被选中的文字颜色
     private float mTextSize = 48;
     private int mTextPadding = 7;//文字padding(只作用于纵向)
+    private long mDuration = 200;
     
     private int mTextTempLocalFlag;//记录文字绘制位置的临时变量
     
@@ -52,6 +54,7 @@ public class SwitchTab extends View {
     private int mTabTargetX;//tab位移目标点
     private int mCurrentTabX;//tab当前位置点
     
+    private TimeInterpolator mInterpolator = new AccelerateInterpolator();
     private ValueAnimator mValueAnimator;
     private OnTabChangeListener mTCListener;
     private Animator.AnimatorListener mListener = new Animator.AnimatorListener() {
@@ -79,6 +82,7 @@ public class SwitchTab extends View {
         
         }
     };
+    
     
     public SwitchTab(Context context) {
         this(context, null);
@@ -272,8 +276,8 @@ public class SwitchTab extends View {
         }
         perInvalidate();
         mValueAnimator = ValueAnimator.ofInt(mCurrentTabX, mTabTargetX);
-        mValueAnimator.setDuration(200);
-        mValueAnimator.setInterpolator(new AccelerateInterpolator());
+        mValueAnimator.setDuration(mDuration);
+        mValueAnimator.setInterpolator(mInterpolator);
         mValueAnimator.addListener(mListener);
         mValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -283,6 +287,14 @@ public class SwitchTab extends View {
             }
         });
         mValueAnimator.start();
+    }
+    
+    public void setInterpolator(TimeInterpolator interpolator) {
+        mInterpolator = interpolator;
+    }
+    
+    public void setSwitchDuration(long duration) {
+        mDuration = duration;
     }
     
     public void setOnTabChangeListener(OnTabChangeListener listener) {
